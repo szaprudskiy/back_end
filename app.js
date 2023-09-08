@@ -16,7 +16,7 @@ mongoose
   .then(() => console.log('MongoDB подключена'))
   .catch((err) => console.error('Ошибка подключения к MongoDB:', err))
 
-const PORT = process.env.PORT || 4001
+const PORT = process.env.PORT || 4004
 
 app.listen(PORT, () => {
   console.log(`Сервер запущен на порту ${PORT}`)
