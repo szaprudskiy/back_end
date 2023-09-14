@@ -4,7 +4,8 @@ const Section = require('../models/section')
 const createSection = async (req, res) => {
   try {
     const data = req.body
-    const newSection = new Section(data)
+    console.log(data)
+    const newSection = await new Section(data)
     await newSection.save()
     res.status(201).json({ section: newSection })
   } catch (error) {
