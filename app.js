@@ -6,6 +6,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 const router = require('./routes/index')
+
 app.use(router)
 
 mongoose
