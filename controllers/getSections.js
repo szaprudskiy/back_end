@@ -1,8 +1,10 @@
 const Section = require('../models/section')
 
-const getSection = async (req, res) => {
+const getSections = async (req, res) => {
+  const userId = req.session.userId
+
   try {
-    const sections = await Section.find()
+    const sections = await Section.find({ userId })
     console.log('Sections:', sections)
     res.status(200).json({ sections })
   } catch (error) {
@@ -11,4 +13,4 @@ const getSection = async (req, res) => {
   }
 }
 
-module.exports = getSection
+module.exports = getSections

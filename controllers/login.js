@@ -1,21 +1,32 @@
 const User = require('../models/user')
 
 const login = async (req, res) => {
-  const { email, password } = req.body
-
   try {
-    // Проверьте, существует ли пользователь с указанным email и паролем
-    const user = await User.findOne({ email, password })
+    const { email, password } = req.body
 
-    if (user) {
-      // Пользователь найден, отправьте сообщение об успешном входе
-      res.status(200).json({ message: 'Успешный вход' })
-    } else {
-      // Пользователь не найден, отправьте сообщение о неудачном входе
-      res.status(401).json({ message: 'Неверные учетные данные' })
+    // Поиск пользователя по email и паролю
+    const authenticatedUser = await User.findOne({ email, password })
+
+    if (!authenticatedUser) {
+      return res.status(401).json({ message: 'Неверные учетные данные' })
     }
+
+    req.session.userId = authenticatedUser._id
+
+    console.log(req.session)
+
+    req.session.save((err) => {
+      if (err) {
+        console.error('Ошибка сохранения сессии:', err)
+      }
+      console.log(req.session.userId)
+      res.status(200).json({
+        message: 'Аутентификация успешна',
+        user: authenticatedUser,
+      })
+    })
   } catch (error) {
-    // Ошибка при поиске пользователя
+    console.error(error)
     res.status(500).json({ message: 'Ошибка сервера' })
   }
 }
