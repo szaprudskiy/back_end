@@ -2,7 +2,6 @@ const Section = require('../models/section')
 
 const getSectionbyId = async (req, res) => {
   const sectionId = req.params.sectionId
-  console.log(sectionId)
 
   try {
     const section = await Section.findById(sectionId)
