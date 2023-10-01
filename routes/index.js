@@ -8,6 +8,8 @@ const getSectionbyId = require('./getSectionbyId')
 const getSections = require('./getSections')
 const updateSection = require('./updateSection')
 const deleteSection = require('./deleteSection')
+const createComment = require('./createComment')
+const checkComment = require('./checkComment')
 
 router.use('/login', login)
 router.use('/register', register)
@@ -16,5 +18,7 @@ router.use('/sections', getSections)
 router.use('/sections', getSectionbyId)
 router.use('/section', updateSection)
 router.use('/delete', deleteSection)
+router.use('/comment', createComment)
+router.use('/checkcomment', checkComment)
 
 module.exports = router

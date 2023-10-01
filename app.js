@@ -12,7 +12,7 @@ app.use(express.json())
 
 app.use(
   cors({
-    origin: 'http://localhost:3001',
+    origin: 'http://localhost:3002',
     credentials: true,
   })
 )
@@ -36,7 +36,7 @@ const store = new MongoDBStore({
 
 app.use(
   session({
-    secret: 'moykluch',
+    secret: 'moykluch1',
     resave: false,
     saveUninitialized: false,
     store: store,
