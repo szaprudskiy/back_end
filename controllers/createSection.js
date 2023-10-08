@@ -3,8 +3,11 @@ const Section = require('../models/section')
 // Создать новый раздел
 const createSection = async (req, res) => {
   try {
-    const { title, pageId, postId, token } = req.body
+    const { title, pageId, postId, token, autoReplyText, autoReplyEnabled } =
+      req.body
     const userId = req.session.userId
+
+    console.log('create section', userId)
 
     const newSection = new Section({
       title,
@@ -12,6 +15,8 @@ const createSection = async (req, res) => {
       postId,
       token,
       userId,
+      autoReplyText,
+      autoReplyEnabled,
     })
 
     await newSection.save()

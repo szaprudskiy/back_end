@@ -5,10 +5,9 @@ const SectionSchema = new mongoose.Schema({
   pageId: String,
   postId: String,
   token: String,
-  // userId: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User',
-  // },
+  userId: String,
+  autoReplyText: String,
+  autoReplyEnabled: Boolean,
 })
 
 const Section = mongoose.model('Section', SectionSchema)

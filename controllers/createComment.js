@@ -1,7 +1,7 @@
 const Comment = require('../models/comment')
 
 const createComment = async (req, res) => {
-  const { postId, commentId, message } = req.body
+  const { postId, commentId, message, autoReply } = req.body
 
   try {
     const existingComment = await Comment.findOne({ commentId })
@@ -10,7 +10,7 @@ const createComment = async (req, res) => {
       return res.status(200).json({ commentId })
     }
 
-    const newComment = new Comment({ postId, commentId, message })
+    const newComment = new Comment({ postId, commentId, message, autoReply })
     await newComment.save()
 
     res.status(201).json({ message: 'Комментарий успешно добавлен.' })
