@@ -12,15 +12,18 @@ app.use(express.json())
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://panel.stat-gurteam.info',
     credentials: true,
   })
 )
 mongoose
-  .connect(process.env.DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    'mongodb+srv://sergeizaprudskiy:JIBXmXtLCOWMzaiO@cluster0.gev2o4t.mongodb.net/?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log('MongoDB подключена')
   })
@@ -29,7 +32,7 @@ mongoose
   })
 
 const store = new MongoDBStore({
-  uri: process.env.DB,
+  uri: 'mongodb+srv://sergeizaprudskiy:JIBXmXtLCOWMzaiO@cluster0.gev2o4t.mongodb.net/?retryWrites=true&w=majority',
   collection: 'sessions',
   client: mongoose.connection,
 })
