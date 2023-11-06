@@ -5,6 +5,7 @@ const commentSchema = new mongoose.Schema({
   commentId: String,
   message: String,
   autoReply: Boolean,
+  openAIautoReply: Boolean,
 })
 
 const Comment = mongoose.model('Comment', commentSchema)

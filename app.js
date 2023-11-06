@@ -12,7 +12,7 @@ app.use(express.json())
 
 app.use(
   cors({
-    origin: 'http://localhost:3002',
+    origin: 'http://localhost:3000',
     credentials: true,
   })
 )
@@ -40,12 +40,6 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: store,
-    cookie: {
-      secure: false, // Установите true, если используете HTTPS
-      expires: null,
-      sameSite: 'Lax',
-      path: '/',
-    },
   })
 )
 

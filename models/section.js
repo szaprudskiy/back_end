@@ -8,6 +8,7 @@ const SectionSchema = new mongoose.Schema({
   userId: String,
   autoReplyText: String,
   autoReplyEnabled: Boolean,
+  openAIAutoReplyEnabled: Boolean,
 })
 
 const Section = mongoose.model('Section', SectionSchema)

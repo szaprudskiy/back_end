@@ -7,9 +7,9 @@ const checkComment = async (req, res) => {
     const existingComment = await Comment.findOne({ commentId })
 
     if (existingComment) {
-      return res.status(200).json({ commentId })
+      return res.status(200).json(commentId)
     } else {
-      return res.status(404).json({ message: 'commentId не найден' })
+      return res.status(404).json(false)
     }
   } catch (error) {
     console.error('Ошибка при проверке наличия комментария:', error)
